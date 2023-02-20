@@ -1,4 +1,4 @@
-//*========== виносиммо в змінні данні юрл і фільтра ====================
+
 const URL = `https://restcountries.com/v3.1/name/`;
 const OPTIONS = 'name,capital,population,flags,languages';
 // const OPTIONS = {
@@ -18,5 +18,5 @@ export function fetchCountries(name) {
   });
 }
 
-// export { fetchCountries };
+
 //?===========================================================

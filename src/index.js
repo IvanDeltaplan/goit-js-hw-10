@@ -1,4 +1,4 @@
-//todo 1) напиши функцію fetchCountries(name), яка робить HTTP-запит
+
 //todo на ресурс name і повертає проміс з масивом країн
 // Використовуй публічний API Rest Countries v2, а саме ресурс name, який повертає масив об'єктів країн
 // яка робить HTTP-запит на ресурс name і повертає проміс з масивом країн
@@ -36,25 +36,24 @@
 //?========================================================================
 import './css/styles.css';
 
-//* //todo 14) Якщо користувач ввів назву країни, якої не існує, бекенд поверне не порожній масив, а помилку
-// овідомлення "Oops, there is no country with that name"
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-//* //todo 7) Використовуй пакет lodash.debounce.
+
 import debounce from 'lodash.debounce';
 
-//* імпорт функції fetchCountries  // 2) Винеси її в окремий файл fetchCountries.js і зроби іменований експорт
+
 import { fetchCountries } from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
-//*===================== доступ до тегів =========================================
+
 const input = document.getElementById('search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-//*===================== слухач на інпут =========================================
+
 input.addEventListener('input', debounce(onLookingForCountry, DEBOUNCE_DELAY));
-//*===============================================================================
+
 function onLookingForCountry(e) {
   //* отримуємо данні з інпута
   let inputValue = '';
@@ -72,7 +71,7 @@ function onLookingForCountry(e) {
     .then(countri => markupSelectionCountries(countri))
     .catch(onFetchError);
 }
-//*================= логіка присвоєння розмітки ======================
+
 function markupSelectionCountries(data) {
   console.log(data);
   if (data.length === 1) {
@@ -83,7 +82,7 @@ function markupSelectionCountries(data) {
     onFetchInfo();
   }
 }
-//*================= виводимо помилки ================================
+
 function onFetchInfo() {
   Notify.info('Too many matches found. Please enter a more specific name.');
 }
@@ -92,7 +91,7 @@ function onFetchError() {
   Notify.failure('Oops, there is no country with that name');
 }
 
-//*==================== розмітка для одної або 10 країн ==============
+
 function createMarkupCountriInfo(arr) {
   const markup = arr
     .map(({ name, flags, capital, population, languages }) => {
